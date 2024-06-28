@@ -1,0 +1,30 @@
+<!-- singleimage.html -->
+{% extends 'categoryfiles/view_details1.html' %}
+{% block content %}
+<style>
+.card {
+height:100%;
+}
+</style>
+
+<div class="container mb-5">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="row">
+                      <div class="col-md-8">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="category-image">
+                                      <img src="{{ post.image.url }}" alt="category image" style="width: 100%; max-height:40%;">
+                                  </div>
+                                  <h1 style="font-size: 100px;">{{ post.postTitle }}<h1>
+                                  <p>{{ post.postdetails|safe|striptags }}</p>
+                              </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+{% endblock %}

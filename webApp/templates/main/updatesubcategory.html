@@ -1,0 +1,29 @@
+ 
+ {% extends 'main/base.html' %}
+ {% block content %}
+ <div class="container offset-md-1 pt-1">
+      <h3 style="margin-top: 30px;">Update SubCategory</h3>
+        <!-- {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %} -->
+ 
+      <form action="" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ form }}
+         <br><br>
+         
+         
+         <button type="submit" class="btn btn-primary" onclick="return alert('updated successfully')">Submit</button>
+         
+      </form>
+     </div>
+ 
+     
+ 
+   {% endblock %} 

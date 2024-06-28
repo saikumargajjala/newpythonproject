@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<h1> <center>ADS VIDEOS</center></h1>
+<div class="row">
+<div class="col-md-12 offset-md-1">
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+          <form action="{% url 'managevideo' %}" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                              <th>Id</th>
+                              <th>Video</th>
+                              
+                              
+                              <th>Action</th>           
+                    </tr>
+                    {% for item in eachproduct %}
+                    <tr>
+                              <td>{{item.id}}</td>
+                              <td>{{item.video}}</td>
+                              
+                    
+                    
+                    <td>
+                              <a href="{% url 'deletevideo' item.pk %}" type="button" class="btn btn-danger" onclick="return confirm('Are you want to delete')">Delete</a>
+                              <a href="{% url 'updatevideo' item.pk  %}" type="button" class="btn btn-success" >Update</a>
+                            </td>
+                    </tr>
+                            
+                    {% endfor %}
+          </form>
+</table>
+</div>
+</div>
+</div>
+{% endblock %}

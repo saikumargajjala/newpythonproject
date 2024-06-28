@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12 offset-md-1">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">     
+          <form action="{% url 'manageupload' %}" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                      <th>sno</th>
+                              <th>Id</th>
+                              <th>Image</th>
+                              
+                              
+                              <th>Action</th>           
+                    </tr>
+                    {% for item in eachproduct %}
+                    <tr>     
+                      <td>{{ forloop.counter }}</td>
+                              <td>{{item.id}}</td>
+                              <td>{{item.Image}}</td>
+                              
+                    
+                    
+                    <td>
+                              <a href="{% url 'deleteupload' item.pk %}" type="button" class="btn btn-danger" onclick="return confirm('Are you want to delete')">Delete</a>
+                              <a href="{% url 'updateupload' item.pk  %}" type="button" class="btn btn-success" >Update</a>
+                            </td>
+                    </tr>
+                            
+                    {% endfor %}
+          </form>
+</table>
+</div>
+  </div>
+</div>
+
+{% endblock %}

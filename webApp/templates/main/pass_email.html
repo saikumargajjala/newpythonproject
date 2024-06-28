@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+</head>
+<body>
+          <p>Hi</p>
+
+<p>You're receiving this email because you requested a password reset for your user account at {{domain}}/</p>
+
+<p>Please click the following link to reset your password:</p>
+
+{{ protocol }}://{{ domain }}{% url "password_reset_confirm" uidb64=uid token=token %}
+Your username, in case you've forgotten: {{ user.get_username }}
+
+<p>Thanks</p>
+<p>Todo App Team</p>
+
+          
+</body>
+</html>

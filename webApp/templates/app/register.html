@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            padding:10px;
+            background-color: royalblue;
+            color: white;
+            border:none;
+            border-radius: 5px;
+            margin-top:20px;
+            padding:15px;
+        }
+        h1{
+            background-color: rgb(133, 107, 189);
+            color:black;
+            text-align: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        table{
+            padding: 25px 25px 25px 25px;
+            background-color: black;
+            color: white;
+        }
+        
+
+    </style>
+
+
+
+
+
+</head>
+
+<body>
+    
+        <h1>Admin Register Form</h1>
+    <center>
+   
+         <form action="{% url 'register' %}" method="POST" id="a">
+            {% csrf_token %}
+             <table style="font-size: 20px;">
+            
+            
+            <tr style="margin-bottom: 100%;">
+                <td><label for="">UserName</label></td>
+                <td><input type="text"  name="username" placeholder="Enter the username" required autocomplete="off" style="height: 30px;"></td>
+            </tr>
+            
+            <tr>
+                <td><label for="">Email</label></td>
+                <td><input type="text"  name="email" placeholder="Enter the email" required autocomplete="off" pattern="[a-z0-9]*@gmail.com" style="height: 30px;"></td>
+            </tr>
+            
+            <tr> 
+                <td><label for="">password</label></td>
+                <td><input type="password"  name="password" placeholder="Enter the password" required autocomplete="off" pattern="[A-Z]{1}[a-z0-9!@#$%^&*]*" style="height: 30px;">
+              </td>
+
+          </tr>
+          <tr>
+            <td></td>
+            <td><p style="font-size: 13px;">1.starting letter should be upper case <br style="font-size: small;">
+                2.atleast one lower case, one number and special character  </p></td>
+
+        </tr>
+        
+        <tr>
+
+            <tr>
+                <td><label for="">confirm password</label></td>
+                <td><input type="password"  name="password2" placeholder="Enter the password" required autocomplete="off"  pattern="[A-Z]{1}[a-z0-9!@#$%^&*]*" style="height: 30px;">
+                    </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><p style="font-size: 13px;">1.starting letter should be upper case <br style="font-size: small;">
+                    2.atleast one lower case, one number and special character  </p></td>
+
+            </tr>
+            
+            <tr>
+            <td></td>
+            
+            <td><button type="submit" onclick="return confirm('registered_successfully')">Submit</button>
+            </tr>
+            
+          </table>  
+
+        </form>
+    
+</center>
+<script>
+        window.addEventListener('beforeunload', function(event) {
+            // Perform actions before the page is unloaded
+        });
+    </script>
+    
+        
+
+    
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <title></title>
+    <!-- Add your CSS links or stylesheets here -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+          /* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 170px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: black;
+  overflow-x: hidden;
+  padding-top: 10px;
+  overflow: hidden;
+  margin-top: 95px;
+  
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 700px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: gray;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+  padding-top:7px
+}
+
+    </style>
+</head>
+<body>
+  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+        <h5 class="navbar-brand" style="padding-bottom:0px;">Admin Panel</h5>
+        <a href="{% url 'index' %}"><img src="{%static 'img\Group 1.png' %}" alt="" style="height: 70px; width: 150px;"></a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+            <a class="nav-link" href="{% url 'login'%}" onclick="return confirm()">Logout</a>
+        </div>
+        <!-- Navbar content -->
+    </div>
+</nav>
+
+
+    <!-- ====================sidebar========================== -->
+    <div class="sidenav">
+          <a href="{% url 'dash_board' %}">Dashboard</a>
+          <button class="dropdown-btn">Categories
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'addcat' %}">Add category</a>
+            <a href="{% url 'managecategory' %}">Manage category</a>
+          </div>
+
+          <button class="dropdown-btn">SubCategories
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'addsubcategory' %}">Add category</a>
+            <a href="{% url 'managesubcategory' %}">Manage category</a>
+          </div>
+
+          <button class="dropdown-btn">Posts
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'addpost' %}">Add Post</a>
+            <a href="{% url 'managepost' %}">Manage Post</a>
+          </div>
+
+          <button class="dropdown-btn">Advertisement
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'addupload' %}">Add Ads</a>
+            <a href="{% url 'manageupload' %}">Manage Ads</a>
+          </div>
+
+          <button class="dropdown-btn">Ads Videos
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'addvideo' %}">Add Ads video</a>
+            <a href="{% url 'managevideo' %}">Manage Ads video</a>
+          </div>
+          <button class="dropdown-btn">Youtube
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="{% url 'addlink' %}">Add video</a>
+            <a href="{% url 'managelink' %}">Manage video</a>
+          </div>
+
+
+        </div>
+      
+      
+
+    <div class="container mt-3" style="margin-left:150px ;">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Add your JavaScript links or scripts here -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.1/umd/popper.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote-bs4.js'></script><script  src="./script.js"></script>
+    
+    <script>
+          //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+    </script>
+</body>
+</html>

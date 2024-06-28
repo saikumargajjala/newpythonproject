@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<!-- Your existing content here -->
+
+{% if messages %}
+<div class="container">
+  {% for message in messages %}
+  <div class="alert alert-success" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h1><center>View Posts</center></h1>
+<div class="row">
+  <div class="col-md-12 offset-md-1">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <form action="{% url 'managepost' %}" method="POST">
+          {% csrf_token %}
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Sub Category</th>
+              
+              <th>S-trending</th>
+              <th>Trending</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in eachproduct %}
+            <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.postTitle}}</td>
+              <td>{{item.category}}</td>
+              <td>{{item.subcategory}}</td>
+              <td>{{item.Treanding}}</td>
+              <td>{{item.SinglePageTrending}}</td>
+              <td>
+                <a href="{% url 'deletepost' item.pk %}" type="button" class="btn btn-danger"
+                  onclick="return confirm('Are you want to delete')">Delete</a><br>
+                <a href="{% url 'updatepost' item.pk %}" type="button" class="btn btn-success" style="margin-top:5px;">Update</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </form>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

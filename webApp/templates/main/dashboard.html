@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<style>
+  .category-box {
+    border: 1px solid #070707;
+    background-color: rgb(245, 198, 6);
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .category-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+  <div class="container offset-md-1 pt-2">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="category-box">
+          <i class="bi bi-speedometer category-icon"></i>
+          <span><i class="glyphicon glyphicon-user"></i>
+           <a href="{% url 'managecategory' %} " style="text-decoration: none;"> <h5 style="color: rgb(6, 6, 6); font-size: 30px;">Categories</h5></a>
+          </span>
+          <h4>{{ categorycount }}</h4>
+
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="category-box">
+          <i class="bi bi-file-earmark-text category-icon"></i>
+          <a href="{% url 'managesubcategory' %}" style="text-decoration: none;"> <h5 style="color: rgb(6, 6, 6); font-size: 30px;">SubCategories</h5></a>
+          <h5>{{ subcategorycount }}</h5>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="category-box">
+          <i class="bi bi-person category-icon"></i>
+          <a href="{% url 'managepost' %}" style="text-decoration: none;"><h5 style="color: rgb(6, 6, 6); font-size: 30px;">Posts</h5></a>
+          <h5>{{ postcount }}</h5>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </div>
+  {% endblock %}

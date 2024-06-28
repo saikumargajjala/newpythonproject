@@ -1,0 +1,237 @@
+{% extends 'app/main.html' %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid py-2">
+    <div class="container mt-5">
+        <div class="row">
+
+
+    <!-- ==================post image============= -->
+    
+    <div class="col-md-8"> 
+       <div class="card mb-5 ml-0">
+        <div class="card-body">
+            
+        <a class="btn btn-outline-light btn btn-danger text-center mr-2 px-0" style="width: 38px; height: 38px; margin-left: 550px;"
+            href="https://www.youtube.com/@teluguwebmedia99"><i class="fab fa-youtube"></i></a>
+        <a class="btn btn-outline-light btn btn-success text-center mr-2 px-0" style="width: 38px; height: 38px;"
+            href="whatsapp://send?text={{ eachproduct.image.url }}%0A{{ eachproduct.postTitle|urlencode }}%0A{{ eachproduct.created_at }}"><i class="fab fa-whatsapp"></i></a>
+        
+          <h3 class="card-title" style="font-family: 300;">{{ eachproduct.postTitle}}</h3>
+          <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+          <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+        </div>
+        <img src="{{ post.images.url }}" class="card-img-bottom" alt="..." style="height: 550px; width: 685px; margin-bottom: 25px;">
+        <p class="card-text mt-2">{{ post.postdetails|safe|striptags}}</p>
+        <!-- <a href="whatsapp://send?text={{ eachproduct.image.url }}%0A{{ eachproduct.postTitle|urlencode }}%0A{{ eachproduct.created_at }}"> -->
+         
+       </div>
+       <div class="col-md-8"> 
+        <div class="card mb-5 ml-0">
+         <div class="card-body">
+             
+         <a class="btn btn-outline-light btn btn-danger text-center mr-2 px-0" style="width: 38px; height: 38px; margin-left: 550px;"
+             href="https://www.youtube.com/@teluguwebmedia99"><i class="fab fa-youtube"></i></a>
+         <a class="btn btn-outline-light btn btn-success text-center mr-2 px-0" style="width: 38px; height: 38px;"
+             href="whatsapp://send?text={{ eachproduct.image.url }}%0A{{ eachproduct.postTitle|urlencode }}%0A{{ eachproduct.created_at }}"><i class="fab fa-whatsapp"></i></a>
+         
+           <h3 class="card-title" style="font-family: 300;">{{ post.postTitle}}</h3>
+           <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+           <!-- <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> -->
+         </div>
+         <img src="{{ post.image.url }}" class="card-img-bottom" alt="..." style="height: 550px; width: 685px; margin-bottom: 25px;">
+         <p class="card-text mt-2">{{ post.postdetails|safe|striptags}}</p>
+         <!-- <a href="whatsapp://send?text={{ eachproduct.image.url }}%0A{{ eachproduct.postTitle|urlencode }}%0A{{ eachproduct.created_at }}"> -->
+            </div>
+            <!-- ======================Ads==========================  -->
+
+           <div class="col-md-4">
+            <div >
+               {% for y in adsimage %} 
+               <div style="height: px;">
+                <div class="card">
+                  <div class="row no-gutters">
+                    <div class="col-md-2 border-right p-1" style="width: 100px;"> <!-- Add border and padding around the image, and create a column for the image -->
+                      <img src="{{y.Image.url}}" class="img-fluid rounded-start" alt="..." width="100%" height="100%" >
+                    </div>
+                    <div class="col-md-10 border-top" style="max-height: 100px;overflow:hidden;"> <!-- Add border and padding around the card body, and create a column for the card body -->
+                      <!-- <div class="card-body"> -->
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia beatae minima veritatis non quod corporis impedit, cumque assumenda ipsum nobis, accusantium hic consequatur iste debitis officia itaque a possimus iure!</p>
+                        
+                        <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-b ody-secondary">Last updated 3 mins ago</small></p> -->
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+            </div>
+
+                {% endfor %}
+              </div>
+            </div>
+
+              
+              
+              
+            
+           
+    
+            <!-- ==============================end ads=========== -->
+        </div>
+    </div>
+</div>
+
+      <div class="container-fluid py-3 pl-0">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                <h3 class="m-0">Featured</h3>
+                <a class="text-secondary font-weight-medium text-decoration-none" href="">View All</a>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img class="img-fluid h-100" src="{%static './yoga.jpg' %}" style="object-fit: cover;">
+                            <div class="overlay" style="font-size: 35px;">
+                        
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="h2 m-0 font-weight-bold" href="#">ఎలాన్‌ మస్క్‌ తరచుగా
+                                    వివిధ పార్టీల్లో
+                                    డ్రగ్స్‌ సేవిస్తున్నారని</a>
+                            </h5>
+                            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+                                incidunt, libero ad perferendis veritatis quidem rerum perspiciatis quaerat porro et?
+                            </p>
+                            <button type="submit" class="btn btn-primary">Read more</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat the above card structure for each of the remaining cards -->
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img class="img-fluid h-100" src="{%static './GAZA.jpg' %}" style="object-fit: cover;">
+                            <div class="overlay" style="font-size: 35px;">
+                                <!-- Share options -->
+                                <!-- <div class="share-icons">
+                                    <a href="#" class="share-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a href="#" class="share-icon">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                     Add more share options as needed -->
+                                <!-- </div>  -->
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="h2 m-0 font-weight-bold" href="#">ఎలాన్‌ మస్క్‌ తరచుగా
+                                    వివిధ పార్టీల్లో
+                                    డ్రగ్స్‌ సేవిస్తున్నారని</a>
+                            </h5>
+                            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+                                incidunt, libero ad perferendis veritatis quidem rerum perspiciatis quaerat porro et?
+                            </p>
+                            <button type="submit" class="btn btn-primary">Read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img class="img-fluid h-100" src="{%static './elan mask.jpg' %}" style="object-fit: cover;">
+                            <div class="overlay" style="font-size: 35px;">
+                                <!-- Share options -->
+                                
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="h2 m-0 font-weight-bold" href="#">ఎలాన్‌ మస్క్‌ తరచుగా
+                                    వివిధ పార్టీల్లో
+                                    డ్రగ్స్‌ సేవిస్తున్నారని</a>
+                            </h5>
+                            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+                                incidunt, libero ad perferendis veritatis quidem rerum perspiciatis quaerat porro et?
+                            </p>
+                            <button type="submit" class="btn btn-primary">Read more</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="position-relative overflow-hidden" style="height: 200px;">
+                            <img class="img-fluid h-100" src="{% static './KL R.jpg' %}" style="object-fit: cover;">
+                            <div class="overlay" style="font-size: 35px;">
+                                <!-- Share options -->
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="h2 m-0 font-weight-bold" href="#">ఎలాన్‌ మస్క్‌ తరచుగా
+                                    వివిధ పార్టీల్లో
+                                    డ్రగ్స్‌ సేవిస్తున్నారని</a>
+                            </h5>
+                            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+                                incidunt, libero ad perferendis veritatis quidem rerum perspiciatis quaerat porro et?
+                            </p>
+                            <button type="submit" class="btn btn-primary">Read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      
+
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- {% for x in pictures %}
+<div class="card">
+  <img src="{{ x.Image.url }}" alt="John" style="width:100%">
+  <h1>John Doe</h1>
+  <p class="title">CEO & Founder, Example</p>
+  <p>Harvard University</p>
+
+   <a href="#"><i class="fa fa-dribbble"></i></a>
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-linkedin"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a> -->
+  <!-- <p><button>Contact</button></p> -->
+<!-- </div>
+{% endfor %}
+{% for x in videos %}
+<div class="card">
+    <video width="320" height="240" controls>
+        <source src="{{x.video.url}}" type="video/mp4"> -->
+        <!-- <source src="movie.ogg" type="video/ogg"> -->
+        <!-- Your browser does not support the video tag. -->
+      <!-- </video>
+    <h1>John Doe</h1>
+    <p class="title">CEO & Founder, Example</p>
+    <p>Harvard University</p>
+                     
+</div>    
+{% endfor %}                  -->
+
+                  <!-- <a href="whatsapp://send?text=Check%20out%20this%20image:%20{{ image.image.url }}" class="btn btn-primary">Share via WhatsApp</a> -->
+                  <!-- <a href="whatsapp://send?text={{ eachproduct.image.url }}%0A{{ eachproduct.postTitle|urlencode }}%0A{{ eachproduct.created_at }}" class="btn btn-primary">Share on WhatsApp</a> -->
+
+      <!-- <a class="" title="whatsapp" target="_blank" href="https://api.whatsapp.com/send?text={{ image.image.url }}" rel="nofollow noopener">share</a> -->
+      <!-- <a class="" title="whatsapp" target="_blank" href="https://api.whatsapp.com/send?text=Check out this image:https://media/images/download_pgIrG3K.jpeg" rel="nofollow noreferrer noopener">share</a> -->
+      <!-- <a href="https://api.whatsapp.com/send?text=https://teluguwebmedia.co.in/" target="_blank" rel="nofollow noopener">Share</a> -->
+      
+  
+
+{% endblock %}
+
+
+                   
+                    
+
+   

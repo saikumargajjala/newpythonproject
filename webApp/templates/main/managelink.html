@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>View All Youtube videos</center></h1>
+    <div class="row">
+    <div class="col-md-12 offset-md-1">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Embed Video</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for instance in instances %}
+            <tr>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.title }}</td>
+                <td>{{ instance.link }}</td>
+                <td>{{ instance.description }}</td>
+                <td>
+                    <a href="{% url 'updatelink' pk=instance.pk %}"><button type="submit" class="btn btn-success">Update</button></a>
+                    <a href="{% url 'deletelink' pk=instance.pk %}"><button type="submit" class="btn btn-danger" onclick="return confirm('Are you want to delete')">Delete</button></a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+      </div>
+    </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Telugu Web Media</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Add these lines to the head section of your HTML file -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyYq0T9tJ9SAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-67BUQQjqZz7+6GALbJIF3Z3BDgC9tf7sDkU5am5aBAWpH2EmvPBRu3VorAZb4O6d" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyYq0T9tJ9SAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></script> -->
+
+
+    <!-- Favicon -->
+    <link href="{%static 'img/dd.png' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{%static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        #share-button {
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: flex;;
+            align-items: center;
+        }
+
+        /* Style the dropdown content */
+        .share-options {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .share-options a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            display: flex;
+            align-items: center;
+        }
+
+        .share-options a:hover {
+            background-color: #ddd;
+        }
+
+
+        .share-options i {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+
+        /* =========== */
+        .ads {
+            text-align: center;
+            border: 1px solid black;
+            height: 400px;
+            width: 350px;
+            margin-top: 20px;
+            display: block;
+        }
+
+        @media screen and (max-width: 600px) {
+            .ads {
+                width: 250px;
+                height: 300px;
+
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .modal {
+                padding-top: 50px;
+                /* Add space for the close button */
+            }
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 8% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #contactBtn {
+            margin-top: 18px;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .modal-content {
+                width: 90%;
+            }
+
+        }
+
+        #imageCarousel .carousel-inner {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #imageCarousel .carousel-item {
+            text-align: center;
+            width: 100%;
+        }
+
+        #imageCarousel img {
+            height: 100%;
+            width: 0 auto;
+
+        }
+
+        .container {
+            padding: 10px;
+        }
+
+        .navbar-brand img {
+            height: 100px;
+            width: 200px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 48px;
+            border-radius: 50%;
+            background-color: #f3f3f3;
+            color: #555;
+        }
+
+        .social-icons a:hover {
+            background-color: #ddd;
+        }
+
+        #contactBtn {
+            background-color: #f60303;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .change {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar-brand.d-none.d-lg-block {
+                display: block !important;
+                padding-left: 100px;
+            }
+            iframe{
+                height:40%;
+                width:100%;
+            }
+              .ads {
+          
+            border: 1px solid black;
+            height: 200px;
+            width: 280px;
+       
+          
+        }
+
+            #contactBtn {
+                margin-top: 10px;
+                padding: 10px 20px;
+                font-size: 20px;
+                color: white;
+                background-color: red;
+                border: none;
+                border-radius: 10px;
+                outline: none;
+                margin-left: 100px;
+            }
+
+            .social-icons a {
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+                margin-right: 5px;
+                text-align: center;
+                line-height: 48px;
+                border-radius: 50%;
+                background-color: #f3f3f3;
+                color: #555;
+                margin-left: 20px;
+            }
+
+            #imageCarousel .carousel-item img {
+                max-height: 150px !important;
+            }
+
+        }
+
+        #imageCarousel .carousel-item img {
+            width: 100%;
+            height: auto;
+            max-height: 420px;
+            object-fit: cover;
+        }
+
+        .card {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top:10px;
+           
+        }
+
+        .card-img-top {
+            flex: 1;
+            /* Make the image take up available space */
+            overflow: hidden;
+            /* Hide overflow */
+        }
+        .social-icons
+        {
+            margin-left: 50%;
+        }
+
+</style>
+
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row change">
+            <a href="{% url 'index' %}" class="navbar-brand d-none d-lg-block">
+                <img src="{% static 'img/dd.png' %}" alt="logo">
+            </a>
+            <div class="social-icons mt-4">
+                <a href="https://www.linkedin.com/company/101905207/admin/dashboard/" target="_blank"><i class="fab fa-linkedin-in" style="font-size: 20px;color:#1DA1F2"></i></a>
+                <a href="https://www.facebook.com/dreamdevtechnologies/" target="_blank"><i class="fab fa-facebook-f"
+                        style="font-size: 20px; color: #1877F2;"></i></a>
+                <a href="https://www.instagram.com/dreamdevtechnologies/" target="_blank"><i class="fab fa-instagram"
+                        style="font-size: 20px;color: #833AB4;"></i></a>
+                <a href="https://www.youtube.com/channel/UCYph2N_QDLQf6YG8TR5QzvQ" target="_blank"><i class="fab fa-youtube"
+                        style="font-size: 20px;color:#FF0000"></i></a>
+            
+               
+            
+
+            </div>
+            <a href="{% url 'contact'%}"> <button class="btn btn-danger mt-4" >contact us  </button></a>
+        </div>
+    </div>
+
+    <script>
+
+        var modal = document.getElementById("contactModal");
+        var btn = document.getElementById("contactBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        document.getElementById("contactForm").onsubmit = function () {
+            alert("Form submitted!");
+            modal.style.display = "none";
+            return false;
+        };
+
+    </script>
+
+    <div class="container p-0 mb-3">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
+            <a href="" class="navbar-brand d-block d-lg-none">
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" style="background-color: black;"
+                id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0 ">
+                    <a href="{% url 'index' %}" class="nav-item nav-link"><b class="fa fa-home"
+                            style="color: #ddd; margin-left:25px;"></b></a>
+                    {% for category in categories %}
+                    <a href="{%url 'index' category %}" class="nav-item nav-link"><b
+                            style="color: #ddd;">{{category}}</b></a>
+                    {% endfor %}
+
+                    <!--<a href="" class="nav-item nav-link"><b style="color: #ddd;">Contact</b></a>-->
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- Topbar Start -->
+    </style>
+</head>
+<body>
+
+
+
+</script>
+        <script>
+            var months = ['జనవరి', 'ఫిబ్రవరి', 'మార్చి', 'ఏప్రిల్', 'మే', 'జూన్', 'జులై', 'ఆగస్టు', 'సెప్టెంబర్', 'అక్టోబర్', 'నవంబర్', 'డిసెంబర్'];
+            var weeks = [
+                'ఆదివారం',
+                'సోమవారం',
+                'మంగళవారం',
+                'బుధవారం',
+                'గురువారం',
+                'శుక్రవారం',
+                'శనివారం'
+            ];
+
+            const date = new Date()
+            const week = date.getDay();
+            const month = date.getMonth();
+
+            document.getElementById("datenew").innerHTML = new Date();
+
+            const sentance = `${weeks[week]},<br
+            >${months[month]},${date.getDate()},${date.getFullYear()}`
+            document.getElementById("datenew").innerHTML = sentance 
+        </script>
+          
+       
+
+      <div class="container" style="
+      background: linear-gradient(to right, #1fa2ff, #12d8fa, #a6ffcb); margin-bottom: 40px; margin-top: 50px;">
+      <div class="row">
+        <div class="col-md-12">
+        <h2 style="text-align: center; font-size:30px; margin-bottom: 100px; margin-top: 50px;">
+        CONTACT US</h2>
+        </div>
+      
+      
+        <div class="row offset-md-1">
+            <div class="col-md-6">
+                <img src="{% static 'img/dd.png' %}" height="200" width="200">
+                <h1>OPENING HOURS</h1>
+                <b>Monday-Saturday: 10:00AM-07:00PM</b>
+                <br>
+                <br>
+                <h1>Contact</h1>
+                <b>+91 630812986</b>
+                <br><br>
+                <h1>Email Id</h1>
+                <b>mail@gmail.com</b>
+
+            </div>
+            <div class="col-md-6">
+                <form action="/action_page.php" id="container">
+                    <label for="fname">Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                
+                    <label for="lname">Phone Number</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Enter your phno.">
+                
+                    <label for="country">Location</label>
+                    <input type="text" id="location" name="location" placeholder="enter your location">
+                
+                    <label for="subject">Message</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                
+                    <input type="submit" value="Submit">
+                  </form>
+            </div>
+        </div>
+      </div>
+      </div>
+        </div>
+   <style> 
+   
+   
+
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+     
+
+   <!-- Footer Start -->
+    <div class="container pl-5 pr-3" style="background-color:black;">
+        <div class="row">
+            <div class="col-lg-3 col-md-5 mb-5">
+                <a href="{% url 'index' %}" class="navbar-brand">
+                    <!-- <h1 class="mb-2 mt-n2 display-5 text-uppercase"><span class="text-primary">News</span>Room</h1> -->
+                    <img src="{%static 'img/dd.png' %}" alt="logo1" width="200" height="100">
+                </a>
+                <p style="color:white;">Address:Unit no. 114, Manjeera Trinity Corporate, KPHB,Kukutpally Hyderabad
+                    info@dreamdevtechs.com
+                    
+                    +917416315483 </p>
+                <!-- <p>Volup amet magna clita tempor. Tempor sea eos vero ipsum. Lorem lorem sit sed elitr sed kasd et</p> -->
+               
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 mb-5">
+                {% for category in categories %}
+                <ul style="text-decoration-color: #f9f9f9; margin: 0; padding: 0;">
+                    <li style="margin-bottom: -6px;">
+                        <a href="{% url 'index' category %}" class="nav-item nav-link"><b style="color: #ddd;">{{category}}</b></a>
+                    </li>
+                </ul>
+                {% endfor %}
+ </div>
+
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="font-weight-bold mb-4" style="color: white;">Quick Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class=" mb-2" href="{% url 'about' %}" style="color: white;"><i
+                            class="fa fa-angle-right text-light mr-2"></i>About</a>
+                    <a class="mb-2" href="#" style="color: white;"><i
+                            class="fa fa-angle-right text-light mr-2"></i>Services</a>
+                    <a class="mb-2" href="#" style="color: white;"><i
+                            class="fa fa-angle-right text-light mr-2"></i>Privacy &
+                        policy</a>
+                    <a class="mb-2" href="#" style="color: white;"><i
+                            class="fa fa-angle-right text-light mr-2"></i>Terms &
+                        conditions</a>
+                    <a class="" href="#" style="color: white;"><i
+                            class="fa fa-angle-right text-light mr-2"></i>Contact</a>
+                </div>
+            </div>
+            <div style="margin-top: 100px;">
+                <h3 style="color: #f9f9f9;">FOLLOW US</h3>
+                <!-- <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;"
+                    href="#"><i class="fab fa-twitter"></i></a> -->
+                <a class="btn btn-outline-light btn btn-info mr-2 px-0" style="width: 38px; height: 38px;"
+                    href="https://www.facebook.com/dreamdevtechnologies"><i class="fab fa-facebook-f"
+                        style="color: #1b4db0;"></i></a>
+                <!-- <a class="btn btn-outline-secondary text-center mr-2 px-0" style="width: 38px; height: 38px;"
+                    href="#"><i class="fab fa-linkedin-in"></i></a> -->
+                <a class="btn btn-outline-light text-center mr-2 px-0" style="width: 38px; height: 38px;"
+                    href="https://www.instagram.com/dreamdevtechnologies"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn btn-danger text-center mr-2 px-0"
+                    style="width: 38px; height: 38px;" href="https://www.youtube.com/channel/UCYph2N_QDLQf6YG8TR5QzvQ"><i
+                        class="fab fa-youtube"></i></a>
+                <a class="btn btn-outline-light btn btn-info text-center mr-2 px-0"
+                    style="width: 38px; height: 38px;" href="https://www.linkedin.com/company/101905207/admin/dashboard/"><i
+                        class="fab fa-linkedin-in"></i></a>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-4 px-sm-3 px-md-5">
+        <p class="m-0 text-center">
+            &copy; <a class="font-weight-bold" href="#">DD</a>. All Rights Reserved.
+            Designed by <a class="font-weight-bold" href="https://www.dreamdevtechs.com/">DD
+            </a>
+        </p>
+    </div>
+    <!-- Footer End -->
+                
+
+                <!-- JavaScript Libraries -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                <script src="{%static 'lib/easing/easing.min.js'%}"></script>
+                <script src="{%static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+
+                <!-- Contact Javascript File -->
+                <script src="{%static 'mail/jqBootstrapValidation.min.js'%}"></script>
+                <script src="{%static 'mail/contact.js'%}"></script>
+
+                <!-- Template Javascript -->
+                <script src="{% static 'js/main.js'%}"></script>
+
+</body>
+
+</html>

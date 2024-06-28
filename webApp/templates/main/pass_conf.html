@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <style>
+            h1{
+                  background-color: rgb(133, 107, 189);
+                  color:black;
+                  text-align: center;
+                  padding-top: 40px;
+                  padding-bottom: 40px;
+              }
+          </style>
+</head>
+<body>
+  <!-- pass confirm -->
+          <h1>Set a new password!</h1>
+          <center>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" style="background-color:dodgerblue;" value="Change my password">
+</form>
+
+
+
+<p>The password reset link was invalid, possibly because it has already been used. Please request a new password reset.</p>
+</center>
+</body>
+</html>
