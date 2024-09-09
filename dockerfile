@@ -1,6 +1,21 @@
-FROM python:3.9
-WORKDIR app
-COPY . /app
-RUN pip install -r requirements.txt 
-EXPOSE 7000
-CMD ["python","manage.py","runserver","0.0.0.0:7000"]
+# Use the official Node.js image.
+# https://hub.docker.com/_/node
+FROM node:18
+
+# Set the working directory in the container
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of your application code
+COPY . .
+
+# Expose the port your app runs on
+EXPOSE 3000
+
+# Define the command to run your app
+CMD ["node", "app.js"]
