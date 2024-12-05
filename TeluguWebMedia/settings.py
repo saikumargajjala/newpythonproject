@@ -106,10 +106,10 @@ WSGI_APPLICATION = 'TeluguWebMedia.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'python',
+        'NAME': 'admin',
         'USER':'admin',
-        'PASSWORD':'Nani1234567',
-        'HOST':'database-1.c9qoock04u5g.us-east-1.rds.amazonaws.com',
+        'PASSWORD':'sravanthi1234567',
+        'HOST':'database-1.c1gii4ku2u2j.us-east-1.rds.amazonaws.com',
         'PORT':'3306',
         'OPTIONS': {
             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES";',
