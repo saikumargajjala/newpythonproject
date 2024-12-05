@@ -1,0 +1,73 @@
+pipeline {
+    agent any
+
+    environment {
+        // Define environment variables for Docker build
+        IMAGE_NAME = 'my-django-app'  // Docker image name
+        DOCKER_REGISTRY = 'docker.io' // Docker registry (optional, if pushing to a registry)
+        DOCKER_TAG = 'latest'         // Docker tag (can be adjusted for versioning)
+        REPO_URL = 'https://github.com/saikumargajjala/newpythonproject.git' // Repository URL
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the new repository
+                echo 'Cloning the repository...'
+                git url: "${REPO_URL}", branch: 'main'  // Assuming you are using the 'main' branch
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile in the repository
+                    echo 'Building Docker image...'
+                    sh 'docker build -t ${IMAGE_NAME}:${DOCKER_TAG} .'
+                }
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                script {
+                    // Run tests inside the Docker container (optional)
+                    echo 'Running tests...'
+                    // Run Django tests (ensure the manage.py is in the root of your project)
+                    sh 'docker run --rm ${IMAGE_NAME}:${DOCKER_TAG} python manage.py test'
+                }
+            }
+        }
+
+        stage('Push Docker Image to Registry') {
+            steps {
+                script {
+                    // Push the Docker image to a registry (optional)
+                    echo 'Pushing Docker image to registry...'
+                    sh 'docker tag ${IMAGE_NAME}:${DOCKER_TAG} ${DOCKER_REGISTRY}/${IMAGE_NAME}:${DOCKER_TAG}'
+                    sh 'docker push ${DOCKER_REGISTRY}/${IMAGE_NAME}:${DOCKER_TAG}'
+                }
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                script {
+                    // Deploy the Docker container (adjust based on your environment)
+                    echo 'Deploying Docker container...'
+                    // Run the Docker container in detached mode and map port 8000 to the host
+                    sh 'docker run -d -p 8000:8000 ${IMAGE_NAME}:${DOCKER_TAG}'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up Docker resources after the pipeline runs
+            echo 'Cleaning up...'
+            sh 'docker system prune -f'
+        }
+    }
+}
+
