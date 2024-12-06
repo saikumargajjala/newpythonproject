@@ -1,7 +1,7 @@
-Django
-mysqlclient
-pillow
-crispy-bootstrap5
-django-crispy-forms
-django-ckeditor>=6.0.0
-embed-video
+Django==5.1.4
+mysqlclient==2.2.6
+pillow==11.0.0
+crispy-bootstrap5==2024.10
+django-crispy-forms==2.3
+django-ckeditor==6.7.2
+# embed-video  # Commented out or removed
