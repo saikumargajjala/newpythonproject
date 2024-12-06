@@ -60,11 +60,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webApp.apps.WebappConfig',
-    'ckeditor',
-    'ckeditor_uploader',
-    'embed_video',
+    # Remove 'embed_video' from here if it's present
+    # 'embed_video',  
 ]
+
 
 
 
